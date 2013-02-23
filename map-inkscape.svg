@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="map-inkscape.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="732.85277"
-     inkscape:cy="673.6374"
+     inkscape:zoom="0.7"
+     inkscape:cx="991.21577"
+     inkscape:cy="516.82577"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1362"
      inkscape:window-height="749"
-     inkscape:window-x="1366"
+     inkscape:window-x="0"
      inkscape:window-y="15"
      inkscape:window-maximized="0" />
   <metadata
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -56,7 +56,7 @@
        y="-653.12274"
        x="-390.88312"
        id="image3857"
-       xlink:href="file:///home/nirman/code/indata/india-political-map.gif"
+       xlink:href="file:///home/nirman/code/cartos/india-political-map.gif"
        height="2021"
        width="1800"
        style="fill-opacity:0.63181818;fill:#00c3c3" />
