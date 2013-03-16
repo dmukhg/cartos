@@ -1,7 +1,12 @@
 #Cartos
 
 A web-application to create data-visualizations on an SVG map of India both
-programmatically and manually.
+programmatically and manually. 
+
+*Sample use case*: Say you want to show a visualization of literacy rates of
+different states in the country. You enter the literacy percentages in 
+text-fields and (optionally) provide color-coded spectrum ranges and cartos will
+compute the colors and will it in accordingly.
 
 ## The map
 
