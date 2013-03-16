@@ -18,8 +18,10 @@ define(['jquery'], function ($) {
     var self = this;
 
     _.each(_.keys(specifier), function(key) {
+      console.log(key);
       /* For each of the states specified, update the color */
       $(self.svg).find('#' + key).css('fill', specifier[key]);
+
     });
   };
 
