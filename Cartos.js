@@ -18,11 +18,26 @@ define(['jquery'], function ($) {
     var self = this;
 
     _.each(_.keys(specifier), function(key) {
-      console.log(key);
       /* For each of the states specified, update the color */
       $(self.svg).find('#' + key).css('fill', specifier[key]);
-
     });
+  };
+
+  _cpro.interpolate = function(start, end, specifier, minimum, maximum) {
+    /* Interpolate from start to end (colors) based on (optional) minimum and
+     * maximum values. Also, paint using this new information */
+    var self = this, max, min;
+
+    if (!maximum || !minimum) {
+      /* Compute the max and min values from within the specifier */
+      var values = _.values(specifier);
+
+      max = _.max(values);
+      min = _.min(values);
+    } else {
+      max = maximum;
+      min = minimum;
+    }
   };
 
   return Cartos;

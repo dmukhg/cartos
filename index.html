@@ -12,6 +12,17 @@
     <div class="app-area">
       <div class="app-column map-config">
         <h1>Cartos :: India</h1>
+        <p>
+          <input placeholder="Visualization Title" id="config-title" name="config-title" type="text">
+        </p>
+        <p><input name="by" type="radio" id="by-colors"><label class="padright" for="by-colors">Enter Colors</label>
+        <input name="by" type="radio" id="by-data"><label for="by-data">Enter Data</labeL>
+        </p>
+        <p id="state-values">
+        </p>
+        <p>
+          <input id="draw" type="button" value="Draw">
+        </p>
       </div><div class="app-column map-display" id="svg-container">
       </div>
     </div>
@@ -19,6 +30,40 @@
     <script src="vendor/underscore.js"></script>
     <script src="vendor/require.js" data-main="Cartos.js"></script>
     <script>
+      var states = [ 'AP', 'AR', 'AS', 'BR', 'CT', 'GA', 'GJ', 'HR', 'HP',
+        'JK', 'JH', 'KA', 'KL', 'MP', 'MH', 'MN', 'ML', 'MZ', 'NL', 'OR', 'PB',
+        'RJ', 'SK', 'TN', 'TR', 'UK', 'UP', 'WB'],
+
+            human_states = [
+              'Andhra Pradesh',
+              'Arunanchal Pradesh',
+              'Assam',
+              'Bihar',
+              'Chattisgarh',
+              'Goa',
+              'Gujarat',
+              'Haryana',
+              'Himachal Pradesh',
+              'Jammu and Kashmir',
+              'Jharkhand',
+              'Karnataka',
+              'Kerala',
+              'Madhya Pradesh',
+              'Maharashtra',
+              'Manipur',
+              'Meghalaya',
+              'Mizoram',
+              'Nagaland',
+              'Odisha',
+              'Punjan',
+              'Rajasthan',
+              'Sikkim',
+              'Tamil Nadu',
+              'Tripura',
+              'Uttarakhand',
+              'Uttar Pradesh',
+              'West Bengal'];
+         
       function init(Cartos) {
         var svg_elem = document.createElement('object')
         svg_elem.data = 'map-inkscape.svg';
@@ -29,16 +74,52 @@
               c = new Cartos(svg_doc);
 
           /* The meat of the code must lie here */
-          c.paint({
-            'BR': '#ff9900',
-            'JH': '#ffff00'
-          });
+
+          // Assign a listener to the submit button
+          document.getElementById('draw').onclick = function () {
+            var specifier = {};
+            _.each(states, function(state) {
+              var val = document.getElementById(state).value;
+
+              if (val != '') {
+                specifier[state] = val;
+              }
+            });
+            
+            c.paint(specifier);
+          };
         };
 
         document.getElementById('svg-container').appendChild(svg_elem);
-      }
+      };
+
+      function createStateBoxes() {
+        var ul = document.createElement('ul');
+
+        _.each(_.zip(states, human_states), function(state_block) {
+          var li = document.createElement('li')
+          , tb = document.createElement('input')
+          , lb = document.createElement('label');
+
+          tb['type'] = 'text';
+          tb['class'] = 'state-value';
+          tb['id'] = state_block[0];
+          tb['name'] = state_block[0];
+
+          lb.htmlFor = state_block[0];
+          lb.innerText = state_block[1];
+
+          li.appendChild(tb);
+          li.appendChild(lb);
+
+          ul.appendChild(li);
+        });
+
+        document.getElementById('state-values').appendChild(ul);
+      };
 
       requirejs(['Cartos'], init);
+      createStateBoxes();
     </script>
   </body>
 </html>

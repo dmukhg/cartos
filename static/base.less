@@ -23,6 +23,48 @@ div.app-area {
 
   div.map-config {
     width: 40%;
+
+    input[type=text]{
+      padding: @C-gutter / 2;
+      font-size: 1em;
+      border: 1px solid @C-mGrey;
+    }
+    
+    input[type=text]:focus {
+      outline: none;
+      border: 1px solid @C-pastelBlue;
+      box-shadow: 0px 0px 12px @C-pastelBlue;
+    }
+
+    input#config-title {
+      width: 100%;
+    }
+
+    label.padright {
+      font-size: 1em;
+      padding-right: @C-gutter * 2;
+    }
+
+    p#state-values {
+      ul {
+        padding-left: 0;
+      }
+
+      li {
+        list-style-type: none;
+        padding: @C-gutter / 4 0;
+
+        label {
+          display: inline-block;
+          padding-left: @C-gutter / 2;
+        }
+      }
+    }
+
+    input#draw {
+      font-size: 1.25em;
+      padding: .25em 2em;
+    }
   }
 
   div.map-display {
