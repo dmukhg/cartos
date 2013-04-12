@@ -34,6 +34,7 @@ div.full-height {
 
   .navigation {
     .horizontal-gradient(darken(@darkGrey, 20%), darken(@darkGrey, 10%), darken(@darkGrey, 15%));
+    overflow: hidden;
 
     ul {
       margin-top: @baseLineHeight;
@@ -60,6 +61,42 @@ div.full-height {
     a:hover {
       border-color: transparent;
       background-color: darken(@darkGrey, 5%);
+    }
+  }
+
+  .tab-pane {
+    padding-top: @baseLineHeight;
+  }
+
+  div#data-wrapper {
+    input#config-title {
+      width: 90%;
+    }
+
+    label {
+      display: inline-block;
+      width: 40%;
+    }
+
+    li {
+      list-style-type: none;
+      padding: @baseLineHeight / 4;
+
+      input {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0; 
+      }
+
+      span {
+        margin-left: @baseLineHeight / 2;
+        display: inline;
+        vertical-align: middle;
+      }
+    }
+
+    li:hover {
+      background-color: lighten(@blue, 40%);
     }
   }
 }

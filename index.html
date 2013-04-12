@@ -22,7 +22,16 @@
         </ul>
       </div>
       <div class="tab-content column span11">
-        <div class="tab-pane active" id="data-wrapper">data</div>
+        <div class="tab-pane active" id="data-wrapper">
+          <p>
+            <input placeholder="Visualization Title" id="config-title" name="config-title" type="text">
+          </p>
+          <p id="state-values">
+          </p>
+          <p>
+            <input id="draw" type="button" value="Draw">
+          </p>
+        </div>
         <div class="tab-pane" id="map-wrapper">map</div>
       </div>
     </div>
@@ -35,17 +44,6 @@
     <div class="app-area">
       <div class="app-column map-config">
         <h1>Cartos :: India</h1>
-        <p>
-          <input placeholder="Visualization Title" id="config-title" name="config-title" type="text">
-        </p>
-        <p><input name="by" type="radio" id="by-colors"><label class="padright" for="by-colors">Enter Colors</label>
-        <input name="by" type="radio" id="by-data"><label for="by-data">Enter Data</labeL>
-        </p>
-        <p id="state-values">
-        </p>
-        <p>
-          <input id="draw" type="button" value="Draw">
-        </p>
       </div><div class="app-column map-display" id="svg-container">
       </div>
     </div>
@@ -128,6 +126,7 @@
         _.each(_.zip(states, human_states), function(state_block) {
           var li = document.createElement('li')
           , tb = document.createElement('input')
+          , sp = document.createElement('span')
           , lb = document.createElement('label');
 
           tb['type'] = 'text';
@@ -136,12 +135,15 @@
           tb['name'] = state_block[0];
 
           lb.htmlFor = state_block[0];
-          lb.innerText = state_block[1];
+
+          sp.innerText = state_block[1];
 
           li.appendChild(tb);
-          li.appendChild(lb);
+          li.appendChild(sp);
 
-          ul.appendChild(li);
+          lb.appendChild(li);
+
+          ul.appendChild(lb);
         });
 
         document.getElementById('state-values').appendChild(ul);
