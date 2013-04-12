@@ -1,73 +1,65 @@
 /* Base less configurations */
 @import "common.less";
-@import "type.less";
+@import "../vendor/elements.less";
 
-html, body {
+body, html {
   height: 100%;
+  background-color: @almostWhite;
 }
 
-body {
-  background-color: @C-lGrey;
+div.header {
+  padding-left: @baseLineHeight;
+  .gradient(@blue, darken(@blue, 20%), darken(@blue, 15%));
+  position: fixed;
+  height: @header-height;
+
+  h1 {
+    font-size: 1.25em;
+    line-height: 1.25em;
+    color: @white;
+  }
 }
 
-div.app-area {
-  width: 80%;
-  margin: 0 @C-gutter;
+div.full-height {
+  height: 100%;
+  display: block !important;
+  position: fixed;
+  .box-sizing-mixin;
 
-  div.app-column {
-    display: inline-block;
-    vertical-align: top;
-
-    .C-box-sizing-stack;
+  .column {
+    padding-top: @header-height;
+    height: 100%;
+    overflow: auto;
   }
 
-  div.map-config {
-    width: 40%;
+  .navigation {
+    .horizontal-gradient(darken(@darkGrey, 20%), darken(@darkGrey, 10%), darken(@darkGrey, 15%));
 
-    input[type=text]{
-      padding: @C-gutter / 2;
-      font-size: 1em;
-      border: 1px solid @C-mGrey;
-    }
-    
-    input[type=text]:focus {
-      outline: none;
-      border: 1px solid @C-pastelBlue;
-      box-shadow: 0px 0px 12px @C-pastelBlue;
-    }
-
-    input#config-title {
-      width: 100%;
-    }
-
-    label.padright {
-      font-size: 1em;
-      padding-right: @C-gutter * 2;
-    }
-
-    p#state-values {
-      ul {
-        padding-left: 0;
-      }
+    ul {
+      margin-top: @baseLineHeight;
+      border-bottom: none;
 
       li {
-        list-style-type: none;
-        padding: @C-gutter / 4 0;
+        float: right;
+        width: 100%;
 
-        label {
-          display: inline-block;
-          padding-left: @C-gutter / 2;
+        a {
+          border-radius: 0;
+          width: 100%;
+        }
+      }
+
+      li.active {
+        a {
+          border-color: transparent;
+          background-color: lighten(@darkGrey, 5%);
         }
       }
     }
 
-    input#draw {
-      font-size: 1.25em;
-      padding: .25em 2em;
+    a:hover {
+      border-color: transparent;
+      background-color: darken(@darkGrey, 5%);
     }
-  }
-
-  div.map-display {
-    width: 60%;
   }
 }
