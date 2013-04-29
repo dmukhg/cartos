@@ -29,14 +29,23 @@ div.sidebar {
   div.main {
     overflow-y: scroll;
     height: 100%;
-    border-top: 45px solid transparent;
-    border-bottom: 45px solid transparent;
+    border-top: 46px solid transparent;
+    border-bottom: 46px solid transparent;
     .box-sizing-mixin;
   }
 
   div.footer {
     .floated-navs;
     bottom: 0;
+    .box-sizing-mixin;
+
+    padding: 7.5px;
+    text-align: center;
+
+    button#draw {
+      height: 30px;
+      width: 70px;
+    }
   }
 }
 
