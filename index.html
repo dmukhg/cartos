@@ -24,17 +24,12 @@
         <div id="state-values" class="main">
         </div>
         <div class="footer span4">
-          footer
+          <button id="draw">Draw</button>
         </div>
       </div>
     </div>
 
     <script src="vendor/underscore.js"></script>
-    <script>
-      $(function () {
-        $('#cartos-nav').tab('show');
-      });
-    </script>
     <script src="vendor/require.js" data-main="static/javascript/Cartos.js"></script>
     <script>
       function init(Cartos, inventory) {
@@ -83,6 +78,7 @@
           lb.htmlFor = state_block[0];
 
           sp.innerText = state_block[1];
+          sp.textContent = state_block[1];
 
           li.appendChild(tb);
           li.appendChild(sp);
