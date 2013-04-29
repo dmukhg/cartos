@@ -7,96 +7,78 @@ body, html {
   background-color: @almostWhite;
 }
 
-div.header {
-  padding-left: @baseLineHeight;
-  .gradient(@blue, darken(@blue, 20%), darken(@blue, 15%));
-  position: fixed;
-  height: @header-height;
+div.full-height {
+  height: 100%;
+}
 
-  h1 {
-    font-size: 1.25em;
-    line-height: 1.25em;
-    color: @white;
+div.sidebar {
+  height: 100%;
+
+  .floated-navs {
+    position: absolute;
+    height: 45px;
+    background-color: @darkGrey;
+    margin-left: 0 !important;
+  }
+
+  div.header {
+    top: 0;
+    .floated-navs;
+  }
+
+  div.main {
+    overflow-y: scroll;
+    height: 100%;
+    border-top: 45px solid transparent;
+    border-bottom: 45px solid transparent;
+    .box-sizing-mixin;
+  }
+
+  div.footer {
+    .floated-navs;
+    bottom: 0;
   }
 }
 
-div.full-height {
-  height: 100%;
-  display: block !important;
-  position: fixed;
-  .box-sizing-mixin;
-
-  .column {
-    padding-top: @header-height;
-    height: 100%;
-    overflow: auto;
-  }
-
-  .navigation {
-    .horizontal-gradient(darken(@darkGrey, 20%), darken(@darkGrey, 10%), darken(@darkGrey, 15%));
-    overflow: hidden;
-
-    ul {
-      margin-top: @baseLineHeight;
-      border-bottom: none;
-
-      li {
-        float: right;
-        width: 100%;
-
-        a {
-          border-radius: 0;
-          width: 100%;
-        }
-      }
-
-      li.active {
-        a {
-          border-color: transparent;
-          background-color: lighten(@darkGrey, 5%);
-        }
-      }
-    }
-
-    a:hover {
-      border-color: transparent;
-      background-color: darken(@darkGrey, 5%);
-    }
-  }
-
-  .tab-pane {
-    padding-top: @baseLineHeight;
-  }
-
-  div#data-wrapper {
-    input#config-title {
-      width: 90%;
-    }
+div#state-values {
+  ul {
+    padding: 0.25em;
+    margin-left: 0;
 
     label {
-      display: inline-block;
-      width: 40%;
+      margin: 0;
     }
 
     li {
       list-style-type: none;
-      padding: @baseLineHeight / 4;
+      background-color: transparent;
+      transition: background-color 1s;
+      -webkit-transition: background-color 1s;
+      vertical-align: middle;
+      padding: 0.25em;
 
-      input {
-        display: inline-block;
+      input[type=text] {
+        width: 100px;
+        margin: 0;
+        margin-right: 1em;
         vertical-align: middle;
-        margin: 0; 
       }
 
       span {
-        margin-left: @baseLineHeight / 2;
-        display: inline;
         vertical-align: middle;
       }
     }
 
     li:hover {
-      background-color: lighten(@blue, 40%);
+      background-color: lighten(@blue, 30%);
+      transition: background-color 0.5s;
+      -webkit-transition: background-color 0.5s;
     }
   }
+}
+
+div#svg-container {
+  max-height: 100%;
+  height: 100%;
+  overflow-y: auto;
 }

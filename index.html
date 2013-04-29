@@ -14,40 +14,20 @@
     <script src="vendor/bootstrap.js"></script>
   </head>
   <body>
-    <div class="row-fluid full-height">
-      <div class="column span1 navigation">
-        <ul class="nav nav-tabs text-center" id="cartos-nav">
-          <li class="active"><a href="#data" data-target="#data-wrapper" data-toggle="tab"><img src="/static/images/edit-icon.png"/></a></li>
-          <li><a href="#map" data-target="#map-wrapper" data-toggle="tab"><img src="/static/images/map-icon.png"/></a></li>
-        </ul>
+    <div class="row full-height">
+      <div id="svg-container" class="span8">
       </div>
-      <div class="tab-content column span11">
-        <div class="tab-pane active" id="data-wrapper">
-          <p>
-            <input placeholder="Visualization Title" id="config-title" name="config-title" type="text">
-          </p>
-          <p id="state-values">
-          </p>
-          <p>
-            <input id="draw" type="button" value="Draw">
-          </p>
+      <div class="span4 sidebar">
+        <div class="header span4">
+          header
         </div>
-        <div class="tab-pane" id="map-wrapper">map</div>
+        <div id="state-values" class="main">
+        </div>
+        <div class="footer span4">
+          footer
+        </div>
       </div>
     </div>
-
-    <div class="row-fluid header">
-      <h1>Cartos</h1>
-    </div>
-
-    <!--
-    <div class="app-area">
-      <div class="app-column map-config">
-        <h1>Cartos :: India</h1>
-      </div><div class="app-column map-display" id="svg-container">
-      </div>
-    </div>
-    -->
 
     <script src="vendor/underscore.js"></script>
     <script>
@@ -55,43 +35,9 @@
         $('#cartos-nav').tab('show');
       });
     </script>
-    <script src="vendor/require.js" data-main="Cartos.js"></script>
+    <script src="vendor/require.js" data-main="static/javascript/Cartos.js"></script>
     <script>
-      var states = [ 'AP', 'AR', 'AS', 'BR', 'CT', 'GA', 'GJ', 'HR', 'HP',
-        'JK', 'JH', 'KA', 'KL', 'MP', 'MH', 'MN', 'ML', 'MZ', 'NL', 'OR', 'PB',
-        'RJ', 'SK', 'TN', 'TR', 'UK', 'UP', 'WB'],
-
-            human_states = [
-              'Andhra Pradesh',
-              'Arunanchal Pradesh',
-              'Assam',
-              'Bihar',
-              'Chattisgarh',
-              'Goa',
-              'Gujarat',
-              'Haryana',
-              'Himachal Pradesh',
-              'Jammu and Kashmir',
-              'Jharkhand',
-              'Karnataka',
-              'Kerala',
-              'Madhya Pradesh',
-              'Maharashtra',
-              'Manipur',
-              'Meghalaya',
-              'Mizoram',
-              'Nagaland',
-              'Odisha',
-              'Punjan',
-              'Rajasthan',
-              'Sikkim',
-              'Tamil Nadu',
-              'Tripura',
-              'Uttarakhand',
-              'Uttar Pradesh',
-              'West Bengal'];
-         
-      function init(Cartos) {
+      function init(Cartos, inventory) {
         var svg_elem = document.createElement('object')
         svg_elem.data = 'map-inkscape.svg';
         svg_elem.type = 'image/svg+xml';
@@ -105,7 +51,7 @@
           // Assign a listener to the submit button
           document.getElementById('draw').onclick = function () {
             var specifier = {};
-            _.each(states, function(state) {
+            _.each(inventory.states, function(state) {
               var val = document.getElementById(state).value;
 
               if (val != '') {
@@ -120,10 +66,10 @@
         document.getElementById('svg-container').appendChild(svg_elem);
       };
 
-      function createStateBoxes() {
+      function createStateBoxes(inventory) {
         var ul = document.createElement('ul');
 
-        _.each(_.zip(states, human_states), function(state_block) {
+        _.each(_.zip(inventory.states, inventory.human_states), function(state_block) {
           var li = document.createElement('li')
           , tb = document.createElement('input')
           , sp = document.createElement('span')
@@ -149,8 +95,8 @@
         document.getElementById('state-values').appendChild(ul);
       };
 
-      requirejs(['Cartos'], init);
-      createStateBoxes();
+      requirejs(['Cartos', 'inventory'], init);
+      requirejs(['inventory'], createStateBoxes);
     </script>
   </body>
 </html>
