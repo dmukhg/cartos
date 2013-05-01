@@ -13,6 +13,7 @@ div.full-height {
 
 div.sidebar {
   height: 100%;
+  margin-left: 0;
 
   .floated-navs {
     position: absolute;
@@ -32,6 +33,8 @@ div.sidebar {
     border-top: 46px solid transparent;
     border-bottom: 46px solid transparent;
     .box-sizing-mixin;
+
+    background-color: @white;
   }
 
   div.footer {
@@ -45,6 +48,21 @@ div.sidebar {
     button#draw {
       height: 30px;
       width: 70px;
+
+      background-color: #F3704F;
+      transition: background-color 1s;
+      -webkit-transition: background-color 1s;
+      border-width: 0;
+
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 1px 2px @darkGrey;
+    }
+
+    button#draw:hover {
+      background-color: lighten(#F3704F, 5%);
+      transition: background-color 0.5s;
+      -webkit-transition: background-color 0.5s;
     }
   }
 }
