@@ -45,24 +45,29 @@ div.sidebar {
     padding: 7.5px;
     text-align: center;
 
-    button#draw {
+    button {
       height: 30px;
       width: 70px;
 
-      background-color: @orange;
       transition: background-color 1s;
       -webkit-transition: background-color 1s;
       border-width: 0;
 
       color: white;
       font-weight: bold;
-      text-shadow: 0 1px 2px @darkGrey;
+
+      &:hover {
+        transition: background-color 0.5s;
+        -webkit-transition: background-color 0.5s;
+      }
     }
 
-    button#draw:hover {
-      background-color: lighten(@orange, 5%);
-      transition: background-color 0.5s;
-      -webkit-transition: background-color 0.5s;
+    button#draw {
+      background-color: darken(@orange, 5%);
+      
+      &:hover {
+        background-color: @orange;
+      }
     }
   }
 }
