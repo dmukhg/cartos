@@ -5,6 +5,8 @@
 body, html {
   height: 100%;
   background-color: @almostWhite;
+
+  font-family: @bCFamily;
 }
 
 div.full-height {
@@ -45,7 +47,7 @@ div.sidebar {
     padding: 7.5px;
     text-align: center;
 
-    button {
+    button, input[type=reset] {
       height: 30px;
       width: 70px;
 
@@ -55,6 +57,7 @@ div.sidebar {
 
       color: white;
       font-weight: bold;
+      font-size: small;
 
       &:hover {
         transition: background-color 0.5s;
@@ -67,6 +70,14 @@ div.sidebar {
       
       &:hover {
         background-color: @orange;
+      }
+    }
+
+    input[type=reset] {
+      background-color: @midGrey;
+
+      &:hover {
+        background-color: lighten(@midGrey, 10%);
       }
     }
   }
