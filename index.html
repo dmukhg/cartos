@@ -38,7 +38,7 @@
     <script src="vendor/underscore.js"></script>
     <script src="vendor/require.js"></script>
     <script>
-      function init(Map, inventory) {
+      function init(Map, inventory, interpolate) {
         var svg_elem = document.createElement('object')
         svg_elem.data = 'map-inkscape.svg';
         svg_elem.type = 'image/svg+xml';
@@ -55,6 +55,10 @@
             _.each(inventory.states, function(state) {
               var val = document.getElementById(state).value;
 
+              if ( ! isNaN(parseFloat(val)) ){
+                val = interpolate(parseFloat(val));
+              }
+
               if (val != '') {
                 specifier[state] = val;
               }
@@ -67,9 +71,10 @@
           // from a scale.
           var specifier = {};
           _.each(inventory.states, function(state) {
-            specifier[state] = "rgb( " + Math.ceil(Math.random() * 50 + 170) + ","
-                                   + Math.ceil(Math.random() * 50 + 170) + ","
-                                   + Math.ceil(Math.random() * 50 + 170) + ")";
+            var value = Math.round(Math.random() * 100) / 100 ;
+
+            specifier[state] = interpolate(value);
+            document.getElementById(state).value = value;
           });
 
           m.paint(specifier);
@@ -115,8 +120,19 @@
         }
       });
 
-      requirejs(['map', 'inventory'], init);
+      requirejs(['map', 'inventory', 'interpolate'], init);
       requirejs(['inventory'], createStateBoxes);
+    </script>
+
+    <!-- Google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-40620026-1', 'dmulog.in');
+      ga('send', 'pageview');
     </script>
   </body>
 </html>
