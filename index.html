@@ -109,7 +109,10 @@
       };
 
       requirejs.config({
-        baseUrl: 'static/javascript/'
+        baseUrl: 'static/javascript/',
+        paths: {
+          'jquery': "../../vendor/jquery"
+        }
       });
 
       requirejs(['map', 'inventory'], init);

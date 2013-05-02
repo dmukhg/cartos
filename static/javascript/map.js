@@ -1,9 +1,3 @@
-requirejs.config({
-  paths: {
-    jquery: "vendor/jquery",
-  }
-});
-
 define(['jquery'], function ($) {
   var _ = window._,
       Map = function(svg) {
