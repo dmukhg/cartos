@@ -38,14 +38,14 @@
     <script src="vendor/underscore.js"></script>
     <script src="vendor/require.js" data-main="static/javascript/Cartos.js"></script>
     <script>
-      function init(Cartos, inventory) {
+      function init(Map, inventory) {
         var svg_elem = document.createElement('object')
         svg_elem.data = 'map-inkscape.svg';
         svg_elem.type = 'image/svg+xml';
 
         svg_elem.onload = function() {
           var svg_doc = svg_elem.contentDocument,
-              c = new Cartos(svg_doc);
+              m = new Map(svg_doc);
 
           /* The meat of the code must lie here */
 
@@ -60,8 +60,20 @@
               }
             });
             
-            c.paint(specifier);
+            m.paint(specifier);
           };
+
+          // Provide the initial accent colours for the map. Random colours
+          // from a scale.
+          var specifier = {};
+          _.each(inventory.states, function(state) {
+            specifier[state] = "rgb( " + Math.ceil(Math.random() * 50 + 170) + ","
+                                   + Math.ceil(Math.random() * 50 + 170) + ","
+                                   + Math.ceil(Math.random() * 50 + 170) + ")";
+            console.log(specifier[state]);
+          });
+
+          m.paint(specifier);
         };
 
         document.getElementById('svg-container').appendChild(svg_elem);
@@ -97,7 +109,7 @@
         document.getElementById('state-values').appendChild(ul);
       };
 
-      requirejs(['Cartos', 'inventory'], init);
+      requirejs(['map', 'inventory'], init);
       requirejs(['inventory'], createStateBoxes);
     </script>
   </body>
