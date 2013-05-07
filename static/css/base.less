@@ -27,10 +27,12 @@ div.sidebar {
   div.header {
     top: 0;
     .floated-navs;
+    .box-sizing-mixin;
+
+    padding: 7.5px;
     text-align: center;
 
     color: @almostWhite;
-    vertical-align: bottom;
   }
 
   div.main {
@@ -130,15 +132,16 @@ div#svg-container {
   overflow-y: auto;
 }
 
-span.colorpicker-trigger {
+button.colorpicker-trigger {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  border-width: 0;
 
-  border: 1px solid @darkGrey;
-  vertical-align: bottom;
-}
+  height: 30px;
+  width: 70px;
 
-span#color-begin {
-  margin-right: 2em;
+  font-size: small;
+  color: @almostWhite;
+  font-weight: bold;
+
+  text-shadow: 0px 0px 5px @darkGrey;
 }
