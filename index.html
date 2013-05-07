@@ -3,8 +3,10 @@
   <head>
     <title>Cartos: Interactive Geo-Political Maps (India)</title>
 
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-responsive.css"/>
+
+    <link rel="stylesheet" type="text/css" href="vendor/css/colorpicker.css" />
 
     <!-- Webfonts -->
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -38,8 +40,8 @@
       </div>
     </div>
 
-    <script src="vendor/underscore.js"></script>
-    <script src="vendor/require.js"></script>
+    <script src="vendor/js/underscore.js"></script>
+    <script src="vendor/js/require.js"></script>
     <script>
       function init(Map, inventory, interpolate) {
         var svg_elem = document.createElement('object')
@@ -119,7 +121,8 @@
       requirejs.config({
         baseUrl: 'static/javascript/',
         paths: {
-          'jquery': "../../vendor/jquery"
+          'jquery': "../../vendor/js/require-jquery",
+          'jquery.colorpicker': "../../vendor/js/bootstrap-colorpicker"
         }
       });
 
