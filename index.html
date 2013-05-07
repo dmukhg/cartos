@@ -27,7 +27,8 @@
       </div>
       <div class="span4 sidebar">
           <div class="header span4">
-            header
+            Start: <span id="color-begin" class="colorpicker-trigger"></span>
+            End: <span id="color-end" class="colorpicker-trigger"></span>
           </div>
           <div id="state-values" class="main">
           </div>
@@ -78,7 +79,7 @@
           _.each(inventory.states, function(state) {
             var value = Math.round(Math.random() * 100) / 100 ;
 
-            specifier[state] = interpolate(value);
+            specifier[state] = interpolate(value, [255,120,120], [120, 120, 255]);
             document.getElementById(state).value = value;
           });
 
@@ -118,6 +119,25 @@
         document.getElementById('state-values').appendChild(ul);
       };
 
+      function colorInputInitialize($) {
+        var begin = $('span#color-begin'),
+            end   = $('span#color-end'),
+            b_color = '#0099ff',
+            e_color = '#99ff00';
+
+        $(begin).attr('data-color', b_color);
+        $(begin).css('background-color', b_color);
+        $(begin).colorpicker().on('changeColor', function(ev) {
+          $(this).css('background-color', ev.color.toHex());
+        });
+
+        $(end).attr('data-color', e_color);
+        $(end).css('background-color', e_color);
+        $(end).colorpicker().on('changeColor', function(ev) {
+          $(this).css('background-color', ev.color.toHex());
+        });
+      };
+
       requirejs.config({
         baseUrl: 'static/javascript/',
         paths: {
@@ -126,8 +146,11 @@
         }
       });
 
-      requirejs(['map', 'inventory', 'interpolate'], init);
-      requirejs(['inventory'], createStateBoxes);
+      $('document').ready(function() {
+        requirejs(['map', 'inventory', 'interpolate'], init);
+        requirejs(['inventory'], createStateBoxes);
+        requirejs(['jquery', 'jquery.colorpicker'], colorInputInitialize);
+      });
     </script>
 
     <!-- Google analytics -->
