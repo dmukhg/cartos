@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap-responsive.css"/>
-    <link rel="stylesheet" type="text/css" href="vendor/colorpicker/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/colorpicker/css/colorpicker.css" />
 
     <!-- Webfonts -->
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -17,8 +17,6 @@
     <link rel="shortcut icon" href="assets/images/favicon.png"/>
 
     <script src="vendor/less-1.3.3.min.js"></script>
-    <script src="vendor/jquery.js"></script>
-    <script src="vendor/bootstrap/bootstrap.js"></script>
   </head>
   <body>
     <div class="row full-height">
@@ -42,9 +40,9 @@
       </div>
     </div>
 
-    <script src="vendor/underscore.js"></script>
-    <script src="vendor/require.js"></script>
+    <script src="vendor/require.js" data-main="/javascript/main"></script>
     <script>
+      /*
       function init(Map, inventory, interpolate) {
         var svg_elem = document.createElement('object')
         svg_elem.data = 'assets/images/map-inkscape.svg';
@@ -54,7 +52,7 @@
           var svg_doc = svg_elem.contentDocument,
               m = new Map(svg_doc);
 
-          /* The meat of the code must lie here */
+          /* The meat of the code must lie here 
 
           // Assign a listener to the submit button
           document.getElementById('draw').onclick = function () {
@@ -151,7 +149,7 @@
         requirejs(['map', 'inventory', 'interpolate'], init);
         requirejs(['inventory'], createStateBoxes);
         requirejs(['jquery', 'jquery.colorpicker'], colorInputInitialize);
-      });
+      }); */
     </script>
 
     <!-- Google analytics -->

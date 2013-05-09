@@ -1,0 +1,8 @@
+{
+  "name" : "Cartos",
+  "version": "0.0.1",
+  "dependencies": {
+    "amdefine": ">=0.0.2",
+    "jasmine-node" : "1.0.x"
+  }
+}
