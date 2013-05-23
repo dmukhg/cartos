@@ -16,5 +16,16 @@ define(["../javascript/models/map.js"], function (Map) {
       m.set('endColor', '#454545');
       expect('#454545').toEqual(m.get('endColor'));
     });
+
+    it("should update values as requested", function () {
+      expect({}).toEqual(m.get('values'));
+
+      m.set('values', {'AP': '#445555'});
+      expect('#445555').toEqual(m.get('values')['AP']);
+
+      m.set('values', {'BR': '#ff9900'});
+      expect('#445555').toEqual(m.get('values')['AP']);
+      expect('#ff9900').toEqual(m.get('values')['BR']);
+    });
   });
 });
